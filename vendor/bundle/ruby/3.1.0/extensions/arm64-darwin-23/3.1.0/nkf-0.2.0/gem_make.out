@@ -1,0 +1,16 @@
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/nkf-0.2.0/ext/nkf
+/Users/narucha.cha/.rbenv/versions/3.1.4/bin/ruby -I /Users/narucha.cha/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-bubgmg sitelibdir\=./.gem.20240705-12029-bubgmg clean
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-bubgmg sitelibdir\=./.gem.20240705-12029-bubgmg
+compiling nkf.c
+linking shared-object nkf.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.1'
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-bubgmg sitelibdir\=./.gem.20240705-12029-bubgmg install
+/opt/homebrew/bin/ginstall -c -m 0755 nkf.bundle ./.gem.20240705-12029-bubgmg

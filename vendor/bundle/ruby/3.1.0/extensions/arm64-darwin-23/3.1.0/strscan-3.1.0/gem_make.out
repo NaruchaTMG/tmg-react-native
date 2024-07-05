@@ -1,0 +1,18 @@
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/strscan-3.1.0/ext/strscan
+/Users/narucha.cha/.rbenv/versions/3.1.4/bin/ruby -I /Users/narucha.cha/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+checking for rb_reg_onig_match() in ruby.h... no
+creating Makefile
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/strscan-3.1.0/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-sroqip sitelibdir\=./.gem.20240705-12029-sroqip clean
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/strscan-3.1.0/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-sroqip sitelibdir\=./.gem.20240705-12029-sroqip
+compiling strscan.c
+linking shared-object strscan.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.1'
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/strscan-3.1.0/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-sroqip sitelibdir\=./.gem.20240705-12029-sroqip install
+/opt/homebrew/bin/ginstall -c -m 0755 strscan.bundle ./.gem.20240705-12029-sroqip

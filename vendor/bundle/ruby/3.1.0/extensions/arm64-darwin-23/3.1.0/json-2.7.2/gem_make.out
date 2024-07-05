@@ -1,0 +1,13 @@
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+/Users/narucha.cha/.rbenv/versions/3.1.4/bin/ruby -I /Users/narucha.cha/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-gviv9b sitelibdir\=./.gem.20240705-12029-gviv9b clean
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-gviv9b sitelibdir\=./.gem.20240705-12029-gviv9b
+make: Nothing to be done for `all'.
+
+current directory: /Users/narucha.cha/Desktop/Training/TmgReactNative/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240705-12029-gviv9b sitelibdir\=./.gem.20240705-12029-gviv9b install
