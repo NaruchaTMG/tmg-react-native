@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.tmgreactnative"
+    namespace "com.themallgroup.tmgtraining"
     defaultConfig {
-        applicationId "com.tmgreactnative"
+        applicationId "com.themallgroup.tmgtraining"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
