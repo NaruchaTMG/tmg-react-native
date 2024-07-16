@@ -67,22 +67,26 @@ function FirstWidget(props: {
   </View>;
 }
 
+function ScrollViewSample() {
+  return <SafeAreaView style={{flex: 1}}>
+    <ScrollView
+        horizontal={false}
+        style={{flex: 1, backgroundColor: 'white'}}
+        contentContainerStyle={{backgroundColor: 'blue'}}
+        showsVerticalScrollIndicator={false}
+    >
+      <View style={{width: '100%', height: 350, backgroundColor: 'yellow'}}/>
+      <View style={{width: '100%', height: 350, backgroundColor: 'green'}}/>
+      <View style={{width: '100%', height: 350, backgroundColor: 'blue'}}/>
+      <View style={{width: '100%', height: 350, backgroundColor: 'purple'}}/>
+      <View style={{width: '100%', height: 350, backgroundColor: 'grey'}}/>
+    </ScrollView>
+  </SafeAreaView>;
+}
+
 function App(): React.JSX.Element {
   return (
-     <SafeAreaView style={{flex: 1}}>
-       <ScrollView
-           horizontal={false}
-           style={{flex: 1, backgroundColor: "white"}}
-           contentContainerStyle={{backgroundColor: "blue"}}
-           showsVerticalScrollIndicator={false}
-       >
-         <View style={{width: "100%", height: 350, backgroundColor: "yellow"}} />
-         <View style={{width: "100%", height: 350, backgroundColor: "green"}} />
-         <View style={{width: "100%", height: 350,  backgroundColor: "blue"}} />
-         <View style={{width: "100%", height: 350,  backgroundColor: "purple"}} />
-         <View style={{width: "100%", height: 350,  backgroundColor: "grey"}} />
-       </ScrollView>
-     </SafeAreaView>
+     <View></View>
   );
 }
 
