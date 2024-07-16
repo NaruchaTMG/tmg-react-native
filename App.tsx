@@ -84,47 +84,45 @@ function ScrollViewSample() {
   </SafeAreaView>;
 }
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d73',
-    title: 'Fourth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d74',
-    title: 'Fifth Item',
-  },
-];
-
-function RenderItem(props: { item: any }) {
-  return <View style={{
-    width: '100%',
-    height: 50,
-    backgroundColor: 'black',
-    padding: 10,
-    borderRadius: 8,
-  }}>
-    <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
-      {props.item.title}
-    </Text>
-    <Text style={{fontSize: 14, fontWeight: 'normal', color: 'white'}}>
-      {props.item.id}
-    </Text>
-  </View>;
-}
-
-function App(): React.JSX.Element {
+function FlatListSample() {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: 'First Item',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: 'Second Item',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: 'Third Item',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d73',
+      title: 'Fourth Item',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d74',
+      title: 'Fifth Item',
+    },
+  ];
+  function RenderItem(props: { item: any }) {
+    return <View style={{
+      width: '100%',
+      height: 50,
+      backgroundColor: 'black',
+      padding: 10,
+      borderRadius: 8,
+    }}>
+      <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
+        {props.item.title}
+      </Text>
+      <Text style={{fontSize: 14, fontWeight: 'normal', color: 'white'}}>
+        {props.item.id}
+      </Text>
+    </View>;
+  }
   return (
       // <ScrollView
       //     style={{flex: 1}}
@@ -148,6 +146,11 @@ function App(): React.JSX.Element {
           contentContainerStyle={{gap: 10, padding: 20, marginTop: 50}}
           data={DATA}
           renderItem={({item, index}) => <RenderItem item={item}/>}/>
+  )
+}
+function App(): React.JSX.Element {
+  return (
+    <FlatListSample />
   );
 }
 
