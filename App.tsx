@@ -7,11 +7,12 @@
 
 import React from 'react';
 import {
+  Alert,
   Image,
   ImageBackground,
-  Platform,
+  Platform, Pressable,
   SafeAreaView,
-  Text,
+  Text, TextInput, TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -25,24 +26,39 @@ function App(): React.JSX.Element {
           alignItems: 'center',
           backgroundColor: 'red',
         }}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-            Hello React Native!
-          </Text>
+          <TouchableOpacity
+              onPress={() => Alert.alert('TouchableOpacity')}>
+            <Text
+                style={{fontSize: 20, fontWeight: 'bold'}}>
+              Hello TouchableOpacity!
+            </Text>
+          </TouchableOpacity>
+          <Pressable
+              onPress={() => Alert.alert('PressableOpacity')}
+          >
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+              Hello Pressable!
+            </Text>
+          </Pressable>
+          <TextInput
+              onChangeText={(text: string) => console.log(text)}
+              style={{height: 45, width: 200, backgroundColor: 'grey'}}/>
         </View>
-        <View style={{flex: 1, backgroundColor: 'blue', flexDirection: "row"}}>
+        <View style={{flex: 1, backgroundColor: 'blue', flexDirection: 'row'}}>
           <Image
-              style={{width: "50%", height: '100%', resizeMode: 'contain'}}
+              style={{width: '50%', height: '100%', resizeMode: 'contain'}}
               source={require('./src/assets/images/bear.jpeg')}/>
           <Image
-              style={{width: "50%", height: '100%', resizeMode: 'contain'}}
-              source={{uri: "https://profile.line-scdn.net/0hylJGQ8BXJkN3PjWeQyhZFEt7KC4AECALD11pdQA_fCZeCDFGGQs8JwBsKHVdCmgdHgo8IwY9cHcP"}}/>
+              style={{width: '50%', height: '100%', resizeMode: 'contain'}}
+              source={{uri: 'https://profile.line-scdn.net/0hylJGQ8BXJkN3PjWeQyhZFEt7KC4AECALD11pdQA_fCZeCDFGGQs8JwBsKHVdCmgdHgo8IwY9cHcP'}}/>
         </View>
         <View style={{flex: 1, backgroundColor: 'yellow'}}>
           <ImageBackground
               style={{flex: 1, padding: 50}}
               source={require('./src/assets/images/bear.jpeg')}
           >
-            <View style={{width: 40, height: 40, backgroundColor: "red"}}></View>
+            <View
+                style={{width: 40, height: 40, backgroundColor: 'red'}}></View>
           </ImageBackground>
         </View>
       </View>
