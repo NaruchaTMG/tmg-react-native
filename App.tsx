@@ -11,7 +11,8 @@ import {
   Image,
   ImageBackground,
   Platform, Pressable,
-  SafeAreaView, ScrollView,
+  SafeAreaView, ScrollView, SectionList, StatusBar,
+  StyleSheet,
   Text, TextInput, TouchableOpacity,
   View,
 } from 'react-native';
@@ -107,6 +108,7 @@ function FlatListSample() {
       title: 'Fifth Item',
     },
   ];
+
   function RenderItem(props: { item: any }) {
     return <View style={{
       width: '100%',
@@ -123,6 +125,7 @@ function FlatListSample() {
       </Text>
     </View>;
   }
+
   return (
       // <ScrollView
       //     style={{flex: 1}}
@@ -146,12 +149,98 @@ function FlatListSample() {
           contentContainerStyle={{gap: 10, padding: 20, marginTop: 50}}
           data={DATA}
           renderItem={({item, index}) => <RenderItem item={item}/>}/>
-  )
-}
-function App(): React.JSX.Element {
-  return (
-    <FlatListSample />
   );
 }
+
+function SectionListSample() {
+  const DATA = [
+    {
+      title: 'Main dishes',
+      data: ['Pizza', 'Burger', 'Risotto'],
+    },
+    {
+      title: 'Sides',
+      data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+    },
+    {
+      title: 'Drinks',
+      data: ['Water', 'Coke', 'Beer'],
+    },
+    {
+      title: 'Desserts',
+      data: ['Cheese Cake', 'Ice Cream'],
+    },
+  ];
+
+  return (
+      <SectionList
+          style={{flex: 1, marginTop: 50}}
+          contentContainerStyle={{padding: 40}}
+          sections={DATA}
+          keyExtractor={(item, index) => item + index}
+          renderSectionHeader={({section: {title}}) => (
+              <Text style={styles.header}>{title}</Text>
+          )}
+          renderItem={({item}) => (
+              <View style={styles.item}>
+                <Text style={styles.title}>{item}</Text>
+              </View>
+          )}
+      />
+  );
+}
+
+type Props = {
+  width: number,
+  height: number,
+  color?: string,
+}
+
+// interface Props {
+//   width: number,
+//   height: number,
+//   color?: string,
+// }
+
+function DisplayBox(props: Props) {
+  return (
+      <View style={{
+        width: props.width,
+        height: props.height,
+        backgroundColor: props.color,
+      }} />
+  );
+}
+
+function App(): React.JSX.Element {
+  return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <DisplayBox width={100} height={50} color={"#2e3"} />
+        <DisplayBox width={200} height={50} color={"green"} />
+        <DisplayBox width={400} height={50} color={"blue"} />
+        <DisplayBox width={50} height={50} color={"yellow"} />
+      </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+    marginHorizontal: 16,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+  },
+  header: {
+    fontSize: 32,
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+  },
+});
 
 export default App;
