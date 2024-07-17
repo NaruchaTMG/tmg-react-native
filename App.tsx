@@ -16,6 +16,7 @@ import {
   Text, TextInput, TouchableOpacity,
   View,
 } from 'react-native';
+import AppNavigator from './src/screens/AppNavigator.tsx';
 
 function FirstWidget(props: {
   onPress: () => void,
@@ -224,7 +225,7 @@ function DisplayWithTypeComponent() {
 
 function App(): React.JSX.Element {
   return (
-      <View></View>
+      <AppNavigator />
   );
 }
 
