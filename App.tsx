@@ -212,14 +212,19 @@ function DisplayBox(props: Props) {
   );
 }
 
+function DisplayWithTypeComponent() {
+  return <View
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <DisplayBox width={100} height={50} color={'#2e3'}/>
+    <DisplayBox width={200} height={50} color={'green'}/>
+    <DisplayBox width={400} height={50} color={'blue'}/>
+    <DisplayBox width={50} height={50} color={'yellow'}/>
+  </View>;
+}
+
 function App(): React.JSX.Element {
   return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <DisplayBox width={100} height={50} color={"#2e3"} />
-        <DisplayBox width={200} height={50} color={"green"} />
-        <DisplayBox width={400} height={50} color={"blue"} />
-        <DisplayBox width={50} height={50} color={"yellow"} />
-      </View>
+      <View></View>
   );
 }
 
