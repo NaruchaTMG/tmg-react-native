@@ -3,6 +3,7 @@ import {Stack} from './Navigators.ts';
 import TabScreen from './screens/TabScreen.tsx';
 import MainScreen from './screens/MainScreen.tsx';
 import ProfileDetail from './screens/profile_detail';
+import ReactHookScreen from './screens/hook';
 
 function AppNavigator() {
 
@@ -12,6 +13,7 @@ function AppNavigator() {
           <Stack.Screen name={'TabScreen'} component={TabScreen} options={{headerShown: false}} />
           <Stack.Screen name={'MainScreen'} component={MainScreen} />
           <Stack.Screen name={'ProfileDetail'} component={ProfileDetail} />
+          <Stack.Screen name={'ReactHookScreen'} component={ReactHookScreen} />
         </Stack.Navigator>
       </NavigationContainer>
   )

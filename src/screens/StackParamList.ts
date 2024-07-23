@@ -3,6 +3,7 @@ export type RootStackParamList = {
   MainScreen: undefined;
   TabScreen: undefined;
   ProfileDetail: undefined;
+  ReactHookScreen: undefined;
 };
 
 export type ProfileStackParamList = {
