@@ -16,7 +16,7 @@ import {
   Text, TextInput, TouchableOpacity,
   View,
 } from 'react-native';
-import AppNavigator from './src/screens/AppNavigator.tsx';
+import AppNavigator from './src/AppNavigator.tsx';
 
 function FirstWidget(props: {
   onPress: () => void,
