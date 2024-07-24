@@ -1,10 +1,10 @@
 import {Button, View} from 'react-native';
 import {styles} from './styles.ts';
-import {BottomTabParamList, RootStackParamList} from '../StackParamList.ts';
+import {RootStackParamList} from '../StackParamList.ts';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useEffect} from 'react';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'TabScreen'>
+type Props = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>
 
 function HomeScreen({navigation, route}: Props) {
   return <View style={styles.container}>
