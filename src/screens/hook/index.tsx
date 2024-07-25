@@ -2,41 +2,57 @@ import {Button, Text, TextInput, View} from 'react-native';
 import {styles} from './styles.ts';
 import {useEffect, useState} from 'react';
 
+type Props = {
+  firstname: string,
+  lastname: string,
+}
+
 export default function ReactHookScreen() {
   const [count, setCount] = useState<number>(0);
   const [text, setText] = useState<string>('Render View');
-  const [form, setForm] = useState({
-    firstname: 'Narucha',
-    lastname: 'Chawpoaen',
-  });
+  const [form, setForm] = useState<Props | null | undefined>(null);
+  const fullname = `${form?.firstname} ${form?.lastname}`
+  const multipleCount = count * 5
+  let i: any;
 
   useEffect(() => {
-    console.log("FORM ::: " + JSON.stringify(form, undefined, 2))
+    setTimeout(() => {
+      setCount((prev) => prev + 1)
+    }, 1000)
+
+    return () => {
+      clearInterval(i)
+    }
+
+    console.log('FORM ::: ' + JSON.stringify(form, undefined, 2));
   }, [form]);
 
+  function startInterval() {
+    i = setInterval(() => {
+      setCount((prev) => prev + 1)
+    }, 1000)
+  }
+
   function onChangeVal(key: string, val: string) {
-    console.log('onChange', text);
+    console.log('onChange', val);
     setForm(prevState => (
-        {
-          ...prevState,
-          [key]: val,
-        }
-    ));
+        prevState ?
+            {...prevState, [key]: val}
+            : {
+              firstname: key === 'firstname' ? val : '',
+              lastname: key === 'lastname' ? val : '',
+            }
+        )
+    );
   }
 
   function incrementCount() {
     setCount((prevState) => {
       return prevState + 1;
     });
-    setCount(prevState => prevState + 1);
-    setCount(prevState => prevState + 1);
-    setCount(prevState => prevState + 1);
   }
 
   function decrementCount() {
-    setCount(prevState => prevState - 1);
-    setCount(prevState => prevState - 1);
-    setCount(prevState => prevState - 1);
     setCount(prevState => prevState - 1);
   }
 
@@ -51,28 +67,40 @@ export default function ReactHookScreen() {
       : (
           <View style={styles.container}>
             <Text style={{fontSize: 20}}>{`${count} CLICK`}</Text>
+            <Text style={{fontSize: 20}}>
+              {multipleCount}
+            </Text>
             <View style={{flexDirection: 'row'}}>
               <Button title={'Increase'} onPress={() => incrementCount()}/>
               <Button title={'Decrease'} onPress={() => decrementCount()}/>
+              <Button title={'Start interval'} onPress={() => startInterval()}/>
             </View>
+            <Text style={{fontSize: 20, padding: 10}}>
+              {fullname}
+            </Text>
             <Text
-                style={{fontSize: 20}}>{`First Name : ${form.firstname} `}</Text>
-            <TextInput onChangeText={text => onChangeVal("firstname", text)} style={{
-              backgroundColor: 'grey',
-              fontSize: 20,
-              height: 40,
-              width: 200,
-            }}/>
+                style={{fontSize: 20, padding: 10}}>{`First Name : ${form?.firstname} `}
+            </Text>
+            <TextInput
+                onChangeText={text => onChangeVal('firstname', text)}
+                style={{
+                  backgroundColor: 'grey',
+                  fontSize: 20,
+                  height: 40,
+                  width: 200,
+                }}/>
             <Text
-                style={{fontSize: 20}}>{`Last Name : ${form.lastname} `}</Text>
-            <TextInput key={'lastname'} onChangeText={text => onChangeVal("lastname",text)}
-                       style={{
-                         backgroundColor: 'grey',
-                         fontSize: 20,
-                         height: 40,
-                         width: 200,
-                       }}/>
-            {/*<TextInput />*/}
+                style={{fontSize: 20}}>{`Last Name : ${form?.lastname} `}
+            </Text>
+            <TextInput
+                key={'lastname'}
+                onChangeText={text => onChangeVal('lastname', text)}
+                style={{
+                  backgroundColor: 'grey',
+                  fontSize: 20,
+                  height: 40,
+                  width: 200,
+                }}/>
           </View>
       );
 }

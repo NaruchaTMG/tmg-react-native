@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NotoSansThai-Bold.ttf",
+      "sha1": "5388da09f9ba53bcc91bf944c679178e5ad81135"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansThai-Medium.ttf",
+      "sha1": "0c8e6cfddb5383160c5170989d5cb0d931dbf1c1"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansThai-Regular.ttf",
+      "sha1": "4f57bb9a3c083b12df991e059771516efdc87df9"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansThai-SemiBold.ttf",
+      "sha1": "e564746e8842a625a51a59d7a70edf44ef71b53f"
+    }
+  ]
+}

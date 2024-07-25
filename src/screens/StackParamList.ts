@@ -1,4 +1,3 @@
-import HomeScreen from './home';
 
 export type RootStackParamList = {
   MainScreen: undefined;
@@ -10,16 +9,5 @@ export type RootStackParamList = {
   FeedScreen: undefined;
   SettingScreen: undefined;
   ProfileScreen: undefined;
+  AuthScreen: undefined;
 };
-
-// export type ProfileStackParamList = {
-//   ProfileScreen: undefined;
-//   ProfileDetail: undefined;
-// };
-//
-// export type BottomTabParamList = {
-//   HomeScreen: undefined;
-//   ProfileStack: undefined;
-//   FeedScreen: undefined;
-//   SettingScreen: undefined;
-// }
