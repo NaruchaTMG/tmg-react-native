@@ -42,13 +42,5 @@ export const globalStyles = StyleSheet.create({
     width: "100%",
     textAlign: "right",
     paddingVertical: 4
-  },
-  buttonContainer: {
-    width: "100%",
-    backgroundColor: 'red',
-    height: 50,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center"
   }
 })

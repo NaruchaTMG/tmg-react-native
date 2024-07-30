@@ -95,7 +95,7 @@ function AuthScreen() {
         </View>
         <View
             style={[styles.container, {paddingHorizontal: 20, paddingTop: 20}]}>
-          <MainButton />
+          <MainButton isActive={conditions?.p1 || false} textButton={"Submit"} onPress={() => {}}/>
         </View>
       </ScrollView>
   );
