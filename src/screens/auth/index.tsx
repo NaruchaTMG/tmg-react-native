@@ -19,9 +19,20 @@ type ConditionProps = {
   p3: boolean;
 }
 
+type FormProps = {
+  idCard: string;
+  telNo: string;
+  refCode: string;
+}
+
 function AuthScreen() {
   const [conditions, setConditions] = useState<ConditionProps | undefined>(
       undefined);
+  const [form, setForm] = useState<FormProps>({
+    idCard: "",
+    telNo: "",
+    refCode: "",
+  });
   const insets = useSafeAreaInsets();
 
   function onPressCondition(tag: string, val: boolean) {
@@ -30,9 +41,21 @@ function AuthScreen() {
           ...prevState,
           [tag]: !val,
         }) : ({
-          p1: tag === "p1",
-          p2: tag === "p2",
-          p3: tag === "p3",
+          p1: tag === 'p1',
+          p2: tag === 'p2',
+          p3: tag === 'p3',
+        }));
+  }
+
+  function onChangeValue(tag: string, val: string) {
+    setForm(prevState =>
+        prevState ? ({
+          ...prevState,
+          [tag]: val,
+        }) : ({
+          idCard: tag === "idCard" ? val : "",
+          telNo: tag === "telNo" ? val : "",
+          refCode: tag === "refCode" ? val : "",
         }));
   }
 
@@ -61,7 +84,8 @@ function AuthScreen() {
               fontSize: 24,
               color: 'white',
               alignItems: 'flex-end',
-              padding: 20,
+              paddingHorizontal: 20,
+              paddingVertical: 15,
             }]}>
             {
               'ยินดีต้อนรับ\nเข้าสู่ระบบสมาชิก M Card'
@@ -69,9 +93,12 @@ function AuthScreen() {
           </Text>
         </ImageBackground>
         <View style={styles.formContainer}>
-          <CustomTextInput placeholder={'Id card number*'}/>
-          <CustomTextInput placeholder={'Telephone number*'}/>
-          <CustomTextInput placeholder={'Refer code*'}/>
+          <CustomTextInput tag={'idCard'} placeholder={'Id card number*'}
+                           onChangeText={onChangeValue}/>
+          <CustomTextInput tag={'telNo'} placeholder={'Telephone number*'}
+                           onChangeText={onChangeValue}/>
+          <CustomTextInput tag={'refCode'} placeholder={'Refer code*'}
+                           onChangeText={onChangeValue}/>
         </View>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox tag={'p1'}
@@ -95,7 +122,18 @@ function AuthScreen() {
         </View>
         <View
             style={[styles.container, {paddingHorizontal: 20, paddingTop: 20}]}>
-          <MainButton isActive={conditions?.p1 || false} textButton={"Submit"} onPress={() => {}}/>
+          <MainButton isActive={conditions?.p1 || false} textButton={'Submit'}
+                      onPress={() => {
+                        if(form && conditions) {
+                          const f = form
+                          const c = conditions
+                          const data = {
+                            ...f,
+                            ...c
+                          }
+                          console.log(data)
+                        }
+                      }}/>
         </View>
       </ScrollView>
   );
