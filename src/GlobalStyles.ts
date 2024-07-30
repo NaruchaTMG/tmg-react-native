@@ -26,7 +26,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "grey",
-    padding: 10
+    paddingHorizontal: 10
   },
   notosanRegular: {
     fontFamily: "NotoSansThai-Regular"

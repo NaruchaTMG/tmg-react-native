@@ -86,7 +86,7 @@ function AuthScreen({navigation}: Props) {
       <ScrollView
           style={[styles.container]}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom: insets.bottom}}>
+          contentContainerStyle={{paddingBottom: insets.bottom + 40}}>
         <ImageBackground
             style={[styles.bgContainer, {paddingTop: insets.top}]}
             source={require('../../assets/images/bg-login.jpg')}

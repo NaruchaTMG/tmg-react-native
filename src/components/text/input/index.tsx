@@ -14,7 +14,7 @@ export function CustomTextInput(props: Props) {
       <View style={globalStyles.container}>
         <View style={[globalStyles.textInput, props.isError ? {borderColor: "red",} : {borderColor: "grey",}]}>
           <TextInput
-              style={{flex: 1}}
+              style={[globalStyles.notosanRegular, {flex: 1, color: "black"}]}
               placeholder={props.placeholder}
               onChangeText={text => props.onChangeText && props.onChangeText(props.tag, text)}
           />
