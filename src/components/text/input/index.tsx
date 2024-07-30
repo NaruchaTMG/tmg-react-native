@@ -21,7 +21,7 @@ export function CustomTextInput(props: Props) {
         </View>
         {
           props.isError && <Text style={globalStyles.textError}>
-              {props.errorMessage ? props.errorMessage : ""}
+              {props.errorMessage ? props.errorMessage : "required"}
             </Text>
         }
       </View>

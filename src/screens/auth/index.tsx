@@ -25,6 +25,12 @@ type FormProps = {
   refCode: string;
 }
 
+type FormErrorsProps = {
+  idCardError: string;
+  telNoError: string;
+  refCodeError: string;
+}
+
 function AuthScreen() {
   const [conditions, setConditions] = useState<ConditionProps | undefined>(
       undefined);
@@ -32,6 +38,11 @@ function AuthScreen() {
     idCard: "",
     telNo: "",
     refCode: "",
+  });
+  const [formErrors, setFormErrors] = useState<FormErrorsProps>({
+    idCardError: "",
+    telNoError: "",
+    refCodeError: "",
   });
   const insets = useSafeAreaInsets();
 
@@ -57,6 +68,14 @@ function AuthScreen() {
           telNo: tag === "telNo" ? val : "",
           refCode: tag === "refCode" ? val : "",
         }));
+  }
+
+  function validateForm() {
+    setFormErrors({
+      idCardError: form.idCard === "" ? "required" : "",
+      telNoError: form.telNo === "" ? "required" : "",
+      refCodeError: "",
+    })
   }
 
   return (
@@ -93,11 +112,19 @@ function AuthScreen() {
           </Text>
         </ImageBackground>
         <View style={styles.formContainer}>
-          <CustomTextInput tag={'idCard'} placeholder={'Id card number*'}
+          <CustomTextInput tag={'idCard'}
+                           placeholder={'Id card number*'}
+                           isError={formErrors.idCardError !== ""}
+                           errorMessage={formErrors.idCardError}
                            onChangeText={onChangeValue}/>
-          <CustomTextInput tag={'telNo'} placeholder={'Telephone number*'}
-                           onChangeText={onChangeValue}/>
-          <CustomTextInput tag={'refCode'} placeholder={'Refer code*'}
+          <CustomTextInput tag={'telNo'}
+                           placeholder={'Telephone number*'}
+                           isError={formErrors.telNoError !== ""}
+                           errorMessage={formErrors.telNoError}
+                           onChangeText={onChangeValue}/> 
+          <CustomTextInput tag={'refCode'}
+                           placeholder={'Refer code optional!'}
+                           // isError={form.refCode === ""}
                            onChangeText={onChangeValue}/>
         </View>
         <View style={styles.checkboxContainer}>
@@ -124,6 +151,7 @@ function AuthScreen() {
             style={[styles.container, {paddingHorizontal: 20, paddingTop: 20}]}>
           <MainButton isActive={conditions?.p1 || false} textButton={'Submit'}
                       onPress={() => {
+                        validateForm()
                         if(form && conditions) {
                           const f = form
                           const c = conditions

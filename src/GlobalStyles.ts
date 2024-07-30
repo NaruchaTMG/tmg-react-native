@@ -41,6 +41,6 @@ export const globalStyles = StyleSheet.create({
     color: 'red',
     width: "100%",
     textAlign: "right",
-    paddingVertical: 4
+    marginTop: 2
   }
 })
