@@ -10,10 +10,10 @@ function AppNavigator() {
 
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={'AuthScreen'} screenOptions={{ headerShown: true }}>
-          <Stack.Screen name={'AuthScreen'} component={AuthScreen} options={{headerShown: false}}/>
+        <Stack.Navigator initialRouteName={'AuthScreen'} screenOptions={{ headerShown: false }}>
+          <Stack.Screen name={'AuthScreen'} component={AuthScreen} />
           {/*<Stack.Screen name={'TabScreen'} component={TabScreen} options={{headerShown: false}} />*/}
-          {/*<Stack.Screen name={'MainScreen'} component={MainScreen} />*/}
+          <Stack.Screen name={'MainScreen'} component={MainScreen} />
           {/*<Stack.Screen name={'ProfileDetail'} component={ProfileDetail} />*/}
           {/*<Stack.Screen name={'ReactHookScreen'} component={ReactHookScreen} />*/}
         </Stack.Navigator>

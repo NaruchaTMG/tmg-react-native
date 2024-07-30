@@ -12,6 +12,8 @@ import MainButton from '../../components/buttons/main';
 import CustomCheckBox from '../../components/buttons/checkbox';
 import {useState} from 'react';
 import {p1, p2, p3} from '../../Constants.ts';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../StackParamList.ts';
 
 type ConditionProps = {
   p1: boolean;
@@ -31,7 +33,9 @@ type FormErrorsProps = {
   refCodeError: string;
 }
 
-function AuthScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, 'AuthScreen'>
+
+function AuthScreen({navigation}: Props) {
   const [conditions, setConditions] = useState<ConditionProps | undefined>(
       undefined);
   const [form, setForm] = useState<FormProps>({
@@ -91,7 +95,7 @@ function AuthScreen() {
           <View style={[
             styles.container,
             {alignItems: 'flex-end', paddingHorizontal: 20}]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("MainScreen")}>
               <Text style={[
                 styles.notosanSemiBold,
                 {fontSize: 16, color: 'white'}]}>Skip</Text>
@@ -121,7 +125,7 @@ function AuthScreen() {
                            placeholder={'Telephone number*'}
                            isError={formErrors.telNoError !== ""}
                            errorMessage={formErrors.telNoError}
-                           onChangeText={onChangeValue}/> 
+                           onChangeText={onChangeValue}/>
           <CustomTextInput tag={'refCode'}
                            placeholder={'Refer code optional!'}
                            // isError={form.refCode === ""}

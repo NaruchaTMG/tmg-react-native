@@ -4,6 +4,11 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  containerCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   bgContainer: {
     width: "100%",
     height: undefined,
