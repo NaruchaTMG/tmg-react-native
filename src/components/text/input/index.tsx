@@ -5,6 +5,8 @@ type Props = {
   placeholder?: string;
   isError?: boolean;
   errorMessage?: string;
+  onChangeText?: (tag: string, value: string) => void;
+  tag: string;
 }
 
 export function CustomTextInput(props: Props) {
@@ -14,6 +16,7 @@ export function CustomTextInput(props: Props) {
           <TextInput
               style={{flex: 1}}
               placeholder={props.placeholder}
+              onChangeText={text => props.onChangeText && props.onChangeText(props.tag, text)}
           />
         </View>
         {
