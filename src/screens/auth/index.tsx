@@ -14,6 +14,7 @@ import {useState} from 'react';
 import {p1, p2, p3} from '../../Constants.ts';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../StackParamList.ts';
+import CustomText from '../../components/text/custom/CustomText.tsx';
 
 type ConditionProps = {
   p1: boolean;
@@ -101,19 +102,15 @@ function AuthScreen({navigation}: Props) {
                 {fontSize: 16, color: 'white'}]}>Skip</Text>
             </TouchableOpacity>
           </View>
-          <Text style={[
-            styles.notosanSemiBold,
-            {
-              fontSize: 24,
-              color: 'white',
-              alignItems: 'flex-end',
-              paddingHorizontal: 20,
-              paddingVertical: 15,
-            }]}>
+          {/*<CustomText fontSize={26} text={'ยินดีต้อนรับ\nเข้าสู่ระบบสมาชิก M Card'} />*/}
+          <CustomText
+              fontFamily={"Medium"}
+              customStyle={{paddingHorizontal: 20, paddingBottom: 15}}
+              fontSize={26}>
             {
               'ยินดีต้อนรับ\nเข้าสู่ระบบสมาชิก M Card'
             }
-          </Text>
+          </CustomText>
         </ImageBackground>
         <View style={styles.formContainer}>
           <CustomTextInput tag={'idCard'}
