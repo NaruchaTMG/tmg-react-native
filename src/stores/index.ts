@@ -3,17 +3,18 @@ import {action, computed, makeObservable, observable} from 'mobx';
 
 export class Store {
   identity: string = "720011100022233"
-  count: number = 0
+  @observable accessor count: number = 0
   counter = 0
 
   constructor() {
-    makeObservable(this, {
-      count: observable,
-      counter: observable,
-      doubleCount: computed,
-      increment: action,
-      decrement: action,
-    })
+    // makeObservable(this, {
+    //   count: observable,
+    //   counter: observable,
+    //   doubleCount: computed,
+    //   increment: action,
+    //   decrement: action,
+    // })
+    // makeObservable(this);
   }
 
   get doubleCount() {
