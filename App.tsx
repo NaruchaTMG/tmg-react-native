@@ -17,6 +17,7 @@ import {
   View,
 } from 'react-native';
 import AppNavigator from './src/AppNavigator.tsx';
+import {store, StoreProvider} from './src/stores';
 
 function FirstWidget(props: {
   onPress: () => void,
@@ -225,7 +226,9 @@ function DisplayWithTypeComponent() {
 
 function App(): React.JSX.Element {
   return (
-      <AppNavigator />
+      <StoreProvider value={store}>
+        <AppNavigator />
+      </StoreProvider>
   );
 }
 

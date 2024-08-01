@@ -1,12 +1,16 @@
 import {Text, View} from 'react-native';
 import {globalStyles} from '../GlobalStyles.ts';
+import {useStore} from '../stores';
 
-export default function MainScreen() {
+function MainScreen() {
+  const store = useStore()
   return (
       <View style={globalStyles.containerCenter}>
         <Text style={[globalStyles.notosanBold, {fontSize: 24}]}>
-          Welcome to arena of valor
+          {`Welcome to ${store.identity}`}
         </Text>
       </View>
   )
 }
+
+export default MainScreen
