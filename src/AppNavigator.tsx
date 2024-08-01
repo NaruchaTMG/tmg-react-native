@@ -1,9 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {Stack} from './Navigators.ts';
-import TabScreen from './screens/TabScreen.tsx';
 import MainScreen from './screens/MainScreen.tsx';
-import ProfileDetail from './screens/profile_detail';
-import ReactHookScreen from './screens/hook';
 import AuthScreen from './screens/auth';
 
 function AppNavigator() {
