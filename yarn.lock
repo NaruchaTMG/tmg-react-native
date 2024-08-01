@@ -432,6 +432,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-proposal-decorators@npm:^7.24.7":
+  version: 7.24.7
+  resolution: "@babel/plugin-proposal-decorators@npm:7.24.7"
+  dependencies:
+    "@babel/helper-create-class-features-plugin": ^7.24.7
+    "@babel/helper-plugin-utils": ^7.24.7
+    "@babel/plugin-syntax-decorators": ^7.24.7
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 75aa5ff5537d5ff77f0e52eb161a2f67c7d2bfd8f2000be710dedb1dd238b43ce53d2f734f84bda95b3f013b69de126403f84167f4eddb1d35e8f26257ee07c8
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-proposal-export-default-from@npm:^7.0.0":
   version: 7.24.7
   resolution: "@babel/plugin-proposal-export-default-from@npm:7.24.7"
@@ -570,6 +583,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 3e80814b5b6d4fe17826093918680a351c2d34398a914ce6e55d8083d72a9bdde4fbaf6a2dcea0e23a03de26dc2917ae3efd603d27099e2b98380345703bf948
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-syntax-decorators@npm:^7.24.7":
+  version: 7.24.7
+  resolution: "@babel/plugin-syntax-decorators@npm:7.24.7"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.24.7
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: dc303bcc1f5df61638f1eddc69dd55e65574bd43d8a4a098d3589f5a742e93a4ca3a173967b34eb95e4eaa994799b4c72bfed8688036e43c634be7f24db01ac5
   languageName: node
   linkType: hard
 
@@ -3086,6 +3110,7 @@ __metadata:
   resolution: "TmgReactNative@workspace:."
   dependencies:
     "@babel/core": ^7.20.0
+    "@babel/plugin-proposal-decorators": ^7.24.7
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
     "@react-native/babel-preset": 0.74.85
