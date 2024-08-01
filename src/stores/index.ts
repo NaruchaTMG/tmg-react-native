@@ -17,15 +17,18 @@ export class Store {
     // makeObservable(this);
   }
 
+  @computed
   get doubleCount() {
     return this.count * 2;
   }
 
+  @action
   increment() {
     this.count += 1
     console.log(this.count)
   }
 
+  @action
   decrement() {
     this.count -= 1
     console.log(this.count)
