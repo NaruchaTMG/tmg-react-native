@@ -76,11 +76,27 @@ function AuthScreen({navigation}: Props) {
   }
 
   function validateForm() {
-    setFormErrors({
-      idCardError: form.idCard === "" ? "required" : "",
-      telNoError: form.telNo === "" ? "required" : "",
-      refCodeError: "",
-    })
+    const temp = formErrors
+    if (form.idCard === "") {
+      temp.idCardError = "required"
+    } else {
+      temp.idCardError = ""
+    }
+    if (form.telNo === "") {
+      temp.telNoError = "required"
+    } else {
+      temp.telNoError = ""
+    }
+    setFormErrors(prevState => ({
+      ...prevState,
+      ...temp
+    }))
+
+    // setFormErrors({
+    //   idCardError: form.idCard === "" ? "required" : "",
+    //   telNoError: form.telNo === "" ? "required" : "",
+    //   refCodeError: "",
+    // })
   }
 
   return (
