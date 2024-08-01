@@ -1,16 +1,26 @@
-import {Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {globalStyles} from '../GlobalStyles.ts';
 import {useStore} from '../stores';
+import CustomText from '../components/text/custom/CustomText.tsx';
+import {observer} from 'mobx-react';
 
 function MainScreen() {
-  const store = useStore()
+  const mainStore = useStore()
   return (
       <View style={globalStyles.containerCenter}>
         <Text style={[globalStyles.notosanBold, {fontSize: 24}]}>
-          {`Welcome to ${store.identity}`}
+          {`Welcome to ${mainStore.identity}`}
         </Text>
+        <CustomText fontFamily={"Bold"} fontSize={20} customStyle={{color: "black"}}>
+          {mainStore.count}
+        </CustomText>
+        <CustomText fontFamily={"Bold"} fontSize={20} customStyle={{color: "black"}}>
+          {`Double ${mainStore.doubleCount}`}
+        </CustomText>
+        <Button title={'increment'} onPress={() => mainStore.increment()} />
+        <Button title={'decrement'} onPress={() => mainStore.decrement()} />
       </View>
   )
 }
 
-export default MainScreen
+export default observer(MainScreen)
