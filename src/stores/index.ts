@@ -7,14 +7,6 @@ export class Store {
   counter = 0
 
   constructor() {
-    // makeObservable(this, {
-    //   count: observable,
-    //   counter: observable,
-    //   doubleCount: computed,
-    //   increment: action,
-    //   decrement: action,
-    // })
-    // makeObservable(this);
   }
 
   @computed
