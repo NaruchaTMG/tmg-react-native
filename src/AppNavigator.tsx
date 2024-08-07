@@ -1,10 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {Stack} from './Navigators.ts';
 import MainScreen from './screens/MainScreen.tsx';
-import AuthScreen from './screens/auth';
+import AuthScreen from './screens/auth/AuthScreen.tsx';
 
 function AppNavigator() {
-
   return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName={'AuthScreen'} screenOptions={{ headerShown: false }}>

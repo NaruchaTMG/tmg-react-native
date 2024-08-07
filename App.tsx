@@ -8,7 +8,7 @@
 import React from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import AppNavigator from './src/AppNavigator.tsx';
-import {store, StoreProvider} from './src/stores';
+import {store, StoreProvider} from './src/stores/Store.ts';
 
 function App() {
   return (

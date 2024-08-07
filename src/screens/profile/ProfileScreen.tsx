@@ -2,13 +2,11 @@ import {Button, Pressable, Text, View} from 'react-native';
 import {styles} from './styles.ts';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {
-  BottomTabParamList,
-  ProfileStackParamList,
   RootStackParamList,
 } from '../StackParamList.ts';
 import {useEffect, useLayoutEffect} from 'react';
 
-type Props = NativeStackScreenProps<ProfileStackParamList, 'ProfileScreen'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'ProfileScreen'>;
 
 function ProfileScreen({navigation, route}: Props) {
 

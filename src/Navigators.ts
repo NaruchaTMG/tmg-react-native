@@ -5,7 +5,6 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();
-export const PStack = createNativeStackNavigator<RootStackParamList>();
 export const Tab = createBottomTabNavigator<RootStackParamList>();
 
 

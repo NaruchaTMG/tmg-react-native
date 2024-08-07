@@ -1,8 +1,8 @@
 import {Button, Text, View} from 'react-native';
 import {globalStyles} from '../GlobalStyles.ts';
-import {useStore} from '../stores';
 import CustomText from '../components/text/custom/CustomText.tsx';
 import {observer} from 'mobx-react';
+import {useStore} from '../stores/Store.ts';
 
 function MainScreen() {
   const mainStore = useStore()

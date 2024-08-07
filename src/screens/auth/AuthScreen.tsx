@@ -10,94 +10,18 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CustomTextInput} from '../../components/text/input';
 import MainButton from '../../components/buttons/main';
 import CustomCheckBox from '../../components/buttons/checkbox';
-import {useState} from 'react';
 import {p1, p2, p3} from '../../Constants.ts';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../StackParamList.ts';
 import CustomText from '../../components/text/custom/CustomText.tsx';
-
-type ConditionProps = {
-  p1: boolean;
-  p2: boolean;
-  p3: boolean;
-}
-
-type FormProps = {
-  idCard: string;
-  telNo: string;
-  refCode: string;
-}
-
-type FormErrorsProps = {
-  idCardError: string;
-  telNoError: string;
-  refCodeError: string;
-}
+import {observer} from 'mobx-react';
+import {useStore} from '../../stores/Store.ts';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AuthScreen'>
 
 function AuthScreen({navigation}: Props) {
-  const [conditions, setConditions] = useState<ConditionProps | undefined>(
-      undefined);
-  const [form, setForm] = useState<FormProps>({
-    idCard: "",
-    telNo: "",
-    refCode: "",
-  });
-  const [formErrors, setFormErrors] = useState<FormErrorsProps>({
-    idCardError: "",
-    telNoError: "",
-    refCodeError: "",
-  });
   const insets = useSafeAreaInsets();
-
-  function onPressCondition(tag: string, val: boolean) {
-    setConditions(prevState =>
-        prevState ? ({
-          ...prevState,
-          [tag]: !val,
-        }) : ({
-          p1: tag === 'p1',
-          p2: tag === 'p2',
-          p3: tag === 'p3',
-        }));
-  }
-
-  function onChangeValue(tag: string, val: string) {
-    setForm(prevState =>
-        prevState ? ({
-          ...prevState,
-          [tag]: val,
-        }) : ({
-          idCard: tag === "idCard" ? val : "",
-          telNo: tag === "telNo" ? val : "",
-          refCode: tag === "refCode" ? val : "",
-        }));
-  }
-
-  function validateForm() {
-    const temp = formErrors
-    if (form.idCard === "") {
-      temp.idCardError = "required"
-    } else {
-      temp.idCardError = ""
-    }
-    if (form.telNo === "") {
-      temp.telNoError = "required"
-    } else {
-      temp.telNoError = ""
-    }
-    setFormErrors(prevState => ({
-      ...prevState,
-      ...temp
-    }))
-
-    // setFormErrors({
-    //   idCardError: form.idCard === "" ? "required" : "",
-    //   telNoError: form.telNo === "" ? "required" : "",
-    //   refCodeError: "",
-    // })
-  }
+  const {authStore} = useStore()
 
   return (
       <ScrollView
@@ -131,57 +55,47 @@ function AuthScreen({navigation}: Props) {
         <View style={styles.formContainer}>
           <CustomTextInput tag={'idCard'}
                            placeholder={'Id card number*'}
-                           isError={formErrors.idCardError !== ""}
-                           errorMessage={formErrors.idCardError}
-                           onChangeText={onChangeValue}/>
+                           isError={authStore?.formErrors?.idCardError !== ""}
+                           errorMessage={authStore?.formErrors?.idCardError}
+                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
           <CustomTextInput tag={'telNo'}
                            placeholder={'Telephone number*'}
-                           isError={formErrors.telNoError !== ""}
-                           errorMessage={formErrors.telNoError}
-                           onChangeText={onChangeValue}/>
+                           isError={authStore?.formErrors?.telNoError !== ""}
+                           errorMessage={authStore?.formErrors?.telNoError}
+                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
           <CustomTextInput tag={'refCode'}
                            placeholder={'Refer code optional!'}
-                           // isError={form.refCode === ""}
-                           onChangeText={onChangeValue}/>
+                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
         </View>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox tag={'p1'}
-                          isChecked={conditions?.p1 || false}
+                          isChecked={authStore?.conditions?.p1 || false}
                           text={p1}
                           onPress={(tag: string, val) => {
-                            onPressCondition(tag, val);
+                            authStore?.setConditions(tag, val);
                           }}/>
           <CustomCheckBox tag={'p2'}
-                          isChecked={conditions?.p2 || false}
+                          isChecked={authStore?.conditions?.p2 || false}
                           text={p2}
                           onPress={(tag: string, val) => {
-                            onPressCondition(tag, val);
+                            authStore?.setConditions(tag, val);
                           }}/>
           <CustomCheckBox tag={'p3'}
-                          isChecked={conditions?.p3 || false}
+                          isChecked={authStore?.conditions?.p3 || false}
                           text={p3}
                           onPress={(tag: string, val) => {
-                            onPressCondition(tag, val);
+                            authStore?.setConditions(tag, val);
                           }}/>
         </View>
         <View
             style={[styles.container, {paddingHorizontal: 20, paddingTop: 20}]}>
-          <MainButton isActive={conditions?.p1 || false} textButton={'Submit'}
+          <MainButton isActive={authStore?.conditions?.p1 || false} textButton={'Submit'}
                       onPress={() => {
-                        validateForm()
-                        if(form && conditions) {
-                          const f = form
-                          const c = conditions
-                          const data = {
-                            ...f,
-                            ...c
-                          }
-                          console.log(data)
-                        }
+                        authStore?.validateForm()
                       }}/>
         </View>
       </ScrollView>
   );
 }
 
-export default AuthScreen;
+export default observer(AuthScreen);
