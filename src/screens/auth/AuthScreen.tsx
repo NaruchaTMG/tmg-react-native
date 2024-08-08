@@ -1,4 +1,5 @@
 import {
+  Button,
   ImageBackground, Pressable,
   ScrollView,
   Text, TextInput,
@@ -16,12 +17,27 @@ import {RootStackParamList} from '../StackParamList.ts';
 import CustomText from '../../components/text/custom/CustomText.tsx';
 import {observer} from 'mobx-react';
 import {useStore} from '../../stores/Store.ts';
+import {useEffect, useState} from 'react';
+import axios from 'axios';
+import {request} from '../../services/Client.ts';
+import {AUTH, USERS} from '../../services/Endpoints.ts';
+import DeviceInfo from 'react-native-device-info';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AuthScreen'>
 
 function AuthScreen({navigation}: Props) {
   const insets = useSafeAreaInsets();
-  const {authStore} = useStore()
+  const {authStore} = useStore();
+  const [id, setId] = useState<number>(10);
+  console.log(`id ===> ${id}`)
+
+  async function getUsers(id: number) {
+    await request('get', USERS(id))
+  }
+
+  useEffect(() => {
+    // getJWT()
+  }, []);
 
   return (
       <ScrollView
@@ -36,7 +52,7 @@ function AuthScreen({navigation}: Props) {
           <View style={[
             styles.container,
             {alignItems: 'flex-end', paddingHorizontal: 20}]}>
-            <TouchableOpacity onPress={() => navigation.navigate("MainScreen")}>
+            <TouchableOpacity onPress={() => navigation.navigate('MainScreen')}>
               <Text style={[
                 styles.notosanSemiBold,
                 {fontSize: 16, color: 'white'}]}>Skip</Text>
@@ -44,7 +60,7 @@ function AuthScreen({navigation}: Props) {
           </View>
           {/*<CustomText fontSize={26} text={'ยินดีต้อนรับ\nเข้าสู่ระบบสมาชิก M Card'} />*/}
           <CustomText
-              fontFamily={"Medium"}
+              fontFamily={'Medium'}
               customStyle={{paddingHorizontal: 20, paddingBottom: 15}}
               fontSize={26}>
             {
@@ -52,20 +68,25 @@ function AuthScreen({navigation}: Props) {
             }
           </CustomText>
         </ImageBackground>
+        <Button title={'Random id'}
+                onPress={() => setId(Math.ceil(Math.random() * 100))}/>
         <View style={styles.formContainer}>
           <CustomTextInput tag={'idCard'}
                            placeholder={'Id card number*'}
-                           isError={authStore?.formErrors?.idCardError !== ""}
+                           isError={authStore?.formErrors?.idCardError !== ''}
                            errorMessage={authStore?.formErrors?.idCardError}
-                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
+                           onChangeText={(tag, val) => authStore?.setForm(tag,
+                               val)}/>
           <CustomTextInput tag={'telNo'}
                            placeholder={'Telephone number*'}
-                           isError={authStore?.formErrors?.telNoError !== ""}
+                           isError={authStore?.formErrors?.telNoError !== ''}
                            errorMessage={authStore?.formErrors?.telNoError}
-                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
+                           onChangeText={(tag, val) => authStore?.setForm(tag,
+                               val)}/>
           <CustomTextInput tag={'refCode'}
                            placeholder={'Refer code optional!'}
-                           onChangeText={(tag, val) => authStore?.setForm(tag, val)}/>
+                           onChangeText={(tag, val) => authStore?.setForm(tag,
+                               val)}/>
         </View>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox tag={'p1'}
@@ -89,9 +110,10 @@ function AuthScreen({navigation}: Props) {
         </View>
         <View
             style={[styles.container, {paddingHorizontal: 20, paddingTop: 20}]}>
-          <MainButton isActive={authStore?.conditions?.p1 || false} textButton={'Submit'}
+          <MainButton isActive={authStore?.conditions?.p1 || false}
+                      textButton={'Submit'}
                       onPress={() => {
-                        authStore?.validateForm()
+                        authStore?.validateForm();
                       }}/>
         </View>
       </ScrollView>

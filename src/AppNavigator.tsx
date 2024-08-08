@@ -2,8 +2,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Stack} from './Navigators.ts';
 import MainScreen from './screens/MainScreen.tsx';
 import AuthScreen from './screens/auth/AuthScreen.tsx';
+import {useStore} from './stores/Store.ts';
+import {useEffect} from 'react';
 
 function AppNavigator() {
+  const {authStore} = useStore()
+
+  useEffect(() => {
+    authStore?.getJWT()
+  }, []);
+
   return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName={'AuthScreen'} screenOptions={{ headerShown: false }}>
